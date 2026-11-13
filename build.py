@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parent
 CONFIG = {
     # Hukuki metinler bir hukukçu tarafından onaylanana kadar True kalmalı:
     # sayfaların üstünde "taslak" şeridi gösterir.
-    "draft": True,
+    "draft": False,
     # Veri sorumlusu (şirket unvanı ya da şahıs adı) ve tebligat adresi.
     "controller": "Furkan Oruçoğlu",
     # Tebligat adresi isteğe bağlıdır; boş bırakılırsa metinlerde adres satırı
