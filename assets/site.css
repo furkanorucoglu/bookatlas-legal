@@ -186,6 +186,12 @@ p { margin: 0 0 1em; text-wrap: pretty; }
   background: var(--paper);
 }
 .btn-ghost:hover { color: var(--ink); }
+.btn-soon {
+  border-style: dashed;
+  color: var(--ink-faint);
+  cursor: default;
+}
+.btn-soon:hover { transform: none; color: var(--ink-faint); }
 .btn small {
   display: block;
   font-size: 11px;

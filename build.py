@@ -31,8 +31,12 @@ CONFIG = {
     # Destek ve KVKK başvuru e-postası.
     "email": "destek@bookatlas.info",
     # Mağaza ve sosyal medya bağlantıları.
-    "app_store_url": None,
-    "google_play_url": None,
+    # İngilizce sayfa ülkeden bağımsız adresi kullanır; App Store ziyaretçiyi
+    # kendi ülkesinin mağazasına yönlendirir.
+    "app_store_url": "https://apps.apple.com/app/bookatlas/id6760548958",
+    "app_store_url_tr": "https://apps.apple.com/tr/app/bookatlas/id6760548958?l=tr",
+    # Uygulama henüz Google Play'de değil: boş kaldıkça "Yakında" rozeti görünür.
+    "google_play_url": "",
     "instagram_url": "https://www.instagram.com/bookatlasapp/",
     "tiktok_url": "https://www.tiktok.com/@bookatlasapp",
     # Supabase projesinin bulunduğu ülke (Supabase paneli > Project Settings).
@@ -466,20 +470,24 @@ LANDING = {
 }
 
 
-def store_button(key: str, labels: tuple[str, str], primary: bool) -> str:
-    url = CONFIG.get(key)
+SOON = {"en": ("Coming soon to", "Google Play"), "tr": ("Yakında", "Google Play’de")}
+
+
+def store_button(key: str, labels: tuple[str, str], primary: bool, lang: str) -> str:
+    url = (lang == "tr" and CONFIG.get(f"{key}_tr")) or CONFIG.get(key)
     style = "btn-primary" if primary else "btn-ghost"
-    inner = f"<span><small>{labels[0]}</small>{labels[1]}</span>"
     if url:
+        inner = f"<span><small>{labels[0]}</small>{labels[1]}</span>"
         return f'<a class="btn {style}" href="{html.escape(url)}" rel="noopener">{inner}</a>'
-    # Bağlantı henüz girilmedi: tıklanamaz düğme + görünür yer tutucu.
-    return f'<span class="btn {style}" aria-disabled="true">{inner}</span>'
+    # Mağaza bağlantısı yok: tıklanamaz "Yakında" rozeti.
+    soon = SOON[lang]
+    inner = f"<span><small>{soon[0]}</small>{soon[1]}</span>"
+    return f'<span class="btn {style} btn-soon" aria-disabled="true">{inner}</span>'
 
 
 def landing(lang: str) -> str:
     c = LANDING[lang]
-    missing_stores = not (CONFIG.get("app_store_url") and CONFIG.get("google_play_url"))
-    store_todo = f' {todo("Mağaza bağlantıları eklenecek")}' if missing_stores else ""
+    store_todo = f' {todo("App Store bağlantısı eklenecek")}' if not CONFIG.get("app_store_url") else ""
     instagram = CONFIG.get("instagram_url")
     tiktok = CONFIG.get("tiktok_url")
     tiktok_link = (
@@ -513,8 +521,8 @@ def landing(lang: str) -> str:
       <h1>{c["h1"]}</h1>
       <p class="lede">{c["lede"]}</p>
       <div class="cta" id="download">
-        {store_button("app_store_url", c["app_store"], True)}
-        {store_button("google_play_url", c["google_play"], False)}
+        {store_button("app_store_url", c["app_store"], True, lang)}
+        {store_button("google_play_url", c["google_play"], False, lang)}
       </div>
       <p class="cta-note">{c["cta_note"]}{store_todo}</p>
     </div>
