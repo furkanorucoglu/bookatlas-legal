@@ -33,7 +33,8 @@ CONFIG = {
     # Mağaza ve sosyal medya bağlantıları.
     "app_store_url": None,
     "google_play_url": None,
-    "instagram_url": None,
+    "instagram_url": "https://www.instagram.com/bookatlasapp/",
+    "tiktok_url": "https://www.tiktok.com/@bookatlasapp",
     # Supabase projesinin bulunduğu ülke (Supabase paneli > Project Settings).
     "supabase_region_tr": "ABD",
     "supabase_region_en": "USA",
@@ -242,6 +243,9 @@ def layout(*, lang, path, title, description, main, other_lang_href, home_sectio
         f'<li><a href="{html.escape(instagram)}" rel="noopener">{s["instagram"]}</a></li>'
         if instagram else ""
     )
+    tiktok = CONFIG.get("tiktok_url")
+    if tiktok:
+        instagram_item += f'<li><a href="{html.escape(tiktok)}" rel="noopener">TikTok</a></li>'
     draft = f'<div class="draft"><div class="wrap">{s["draft"]}</div></div>' if show_draft else ""
 
     return f"""<!DOCTYPE html>
@@ -477,8 +481,12 @@ def landing(lang: str) -> str:
     missing_stores = not (CONFIG.get("app_store_url") and CONFIG.get("google_play_url"))
     store_todo = f' {todo("Mağaza bağlantıları eklenecek")}' if missing_stores else ""
     instagram = CONFIG.get("instagram_url")
+    tiktok = CONFIG.get("tiktok_url")
+    tiktok_link = (
+        f' · <a href="{html.escape(tiktok)}" rel="noopener">TikTok →</a>' if tiktok else ""
+    )
     band_link = (
-        f'<p><a href="{html.escape(instagram)}" rel="noopener">{c["band_link"]} →</a></p>'
+        f'<p><a href="{html.escape(instagram)}" rel="noopener">{c["band_link"]} →</a>{tiktok_link}</p>'
         if instagram else f'<p>{c["band_link"]} {todo("Instagram bağlantısı")}</p>'
     )
 
