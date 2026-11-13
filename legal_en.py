@@ -77,7 +77,7 @@ PAGES["privacy_policy"] = {
   <li><strong>Performance of a contract:</strong> your account and all core features, including AI recommendations and subscriptions.</li>
   <li><strong>Legitimate interests:</strong> preventing abuse, security, fixing bugs and improving the service.</li>
   <li><strong>Legal obligation:</strong> responding to lawful requests from authorities and meeting retention duties.</li>
-  <li><strong>Consent:</strong> the transfer of your data to service providers outside Türkiye, as described in the Turkish <a href="tr/acik-riza-beyani.html">Explicit Consent Statement</a>.</li>
+  <li><strong>Consent:</strong> the transfer of your data to service providers outside Türkiye, as described in the <a href="explicit_consent.html">Explicit Consent Statement</a>.</li>
 </ul>
 
 <h2>4. Who we share it with</h2>
@@ -244,8 +244,34 @@ PAGES["account_deletion"] = {
 """,
 }
 
+PAGES["explicit_consent"] = {
+    "title": "Explicit Consent Statement",
+    "h1": "Explicit Consent Statement",
+    "description": "Consent to the transfer of BookAtlas members' personal data to service providers outside Türkiye.",
+    "tr": "tr/acik-riza-beyani.html",
+    "body": """
+<p>I have read the <a href="privacy_policy.html">Privacy Policy</a> and have been informed about how my personal data is processed.</p>
+
+<div class="box">
+  <p>Under Article 9 of the Turkish Personal Data Protection Law No. 6698, I consent to the transfer of my account and profile details, book entries, reading list, reading goals, recommendation history and subscription details by the data controller {{CONTROLLER}} to the service providers listed below, whose servers are located outside Türkiye, solely for the purposes described in the Privacy Policy.</p>
+</div>
+
+<h2>Service providers</h2>
+""" + RECIPIENTS_TABLE + """
+<h2>I understand that</h2>
+<ul>
+  <li>I am not obliged to give this consent, but because BookAtlas runs on service providers located outside Türkiye, an account cannot be created without it;</li>
+  <li>the countries my data is transferred to may not offer a level of data protection equivalent to that in Türkiye;</li>
+  <li>I can withdraw my consent at any time, without giving a reason, by writing to {{EMAIL}} or by deleting my account; withdrawal takes effect for the future and ends my membership;</li>
+  <li>I can exercise my rights as described in the Privacy Policy.</li>
+</ul>
+<p>This statement is a translation. The <a href="tr/acik-riza-beyani.html">Turkish version</a> prevails if the two differ.</p>
+""",
+}
+
 NAV = [
     ("terms_of_use", "Terms of Use"),
     ("privacy_policy", "Privacy Policy"),
+    ("explicit_consent", "Explicit Consent"),
     ("account_deletion", "Account Deletion"),
 ]

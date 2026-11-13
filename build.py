@@ -651,6 +651,7 @@ TR_TO_EN = {
     "kullanici-sozlesmesi": "terms_of_use.html",
     "aydinlatma-metni-uyeler": "privacy_policy.html",
     "hesap-silme": "account_deletion.html",
+    "acik-riza-beyani": "explicit_consent.html",
 }
 
 
