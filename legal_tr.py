@@ -38,14 +38,14 @@ RIGHTS_LIST = """
 """
 
 APPLICATION = """
-<p>Taleplerinizi, Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ’e uygun olarak {{ADDRESS}} adresine yazılı olarak, {{EMAIL}} adresine e-posta yoluyla veya Tebliğ’de belirtilen diğer yöntemlerle iletebilirsiniz. Başvurunuzda kimliğinizi tespit etmemizi sağlayacak bilgilere ve talebinizin konusuna yer vermeniz gerekir.</p>
+<p>Taleplerinizi, Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ’e uygun olarak {{WRITTEN_ROUTE}}{{EMAIL}} adresine “KVKK Başvuru” konulu e-posta göndererek veya Tebliğ’de belirtilen diğer yöntemlerle iletebilirsiniz. Başvurunuzda kimliğinizi tespit etmemizi sağlayacak bilgilere ve talebinizin konusuna yer vermeniz gerekir.</p>
 <p>Başvurunuz, talebin niteliğine göre en kısa sürede ve en geç 30 (otuz) gün içinde ücretsiz olarak sonuçlandırılır. İşlemin ayrıca bir maliyet gerektirmesi hâlinde Kişisel Verileri Koruma Kurulu tarafından belirlenen tarifedeki ücret alınabilir. Talebinizin reddedilmesi hâlinde gerekçesi size yazılı olarak veya elektronik ortamda bildirilir.</p>
 """
 
 CONTACT = """
 <div class="box">
   <p><strong>Veri sorumlusu:</strong> {{CONTROLLER}}<br>
-  <strong>Adres:</strong> {{ADDRESS}}<br>
+  {{ADDRESS_LINE}}
   <strong>E-posta:</strong> {{EMAIL}}</p>
 </div>
 """
@@ -68,6 +68,7 @@ PAGES["aydinlatma-metni-uyeler"] = {
   <li><strong>Kullanıcı içeriği ve işlem bilgileri:</strong> okuduğunuz kitaplara ilişkin kayıtlar (kitap adı, yazar, ISBN, ülke, şehir, okuyan kişinin adı, bitirme tarihi ve notlarınız), okuma listeniz, okuma hedefleriniz, okuma istatistikleriniz, profilinize yazdığınız kısa tanıtım, harita kartı paylaşım kayıtlarınız, yapay zekâ asistanına yazdığınız istekler ile size sunulan kitap ve film önerilerinin geçmişi.</li>
   <li><strong>Abonelik bilgileri:</strong> premium üyelik durumu, plan türü, satın alınan ürün, satın almanın yapıldığı mağaza, başlangıç ve bitiş tarihleri. Ödeme kartı bilgileriniz tarafımızca işlenmez; ödemeler App Store veya Google Play üzerinden alınır.</li>
   <li><strong>İşlem güvenliği bilgileri:</strong> IP adresi, oturum ve erişim kayıtları, yapay zekâ ve arama özelliklerinin günlük kullanım sayıları.</li>
+  <li><strong>Tercih bilgileri:</strong> dil tercihiniz ve uygulama ayarlarınız. Bu bilgiler oturum bilginizle birlikte cihazınızda yerel olarak saklanır.</li>
 </ul>
 <div class="box">
   <p>Uygulama konum izni istemez; ülke ve şehir bilgisi kitap kaydı sırasında sizin tarafınızdan elle girilir. Kamera yalnızca kitap barkodunu okumak ve dilerseniz profil fotoğrafı çekmek için, fotoğraf galerisi yalnızca profil fotoğrafı seçmek için kullanılır. Uygulamada reklam ve üçüncü taraf analiz aracı bulunmaz.</p>
@@ -109,18 +110,27 @@ PAGES["aydinlatma-metni-uyeler"] = {
 <p>Kişisel verileriniz ayrıca, hukuken yetkili kamu kurum ve kuruluşlarının usulüne uygun talepleri hâlinde bu kurumlarla paylaşılabilir.</p>
 
 <h2>5. Saklama süresi</h2>
-<p>Kişisel verileriniz üyeliğiniz devam ettiği sürece saklanır. Hesabınızı sildiğinizde hesap bilgileriniz, kitap kayıtlarınız, okuma listeniz, hedefleriniz, öneri geçmişiniz ve profil fotoğrafınız silinir. Mevzuat gereği saklanması zorunlu olan veya bir uyuşmazlık hâlinde ispat için gerekli olan kayıtlar, ilgili yasal süre boyunca saklanır ve sürenin sonunda silinir, yok edilir veya anonim hâle getirilir.</p>
+<p>Kişisel verileriniz üyeliğiniz devam ettiği sürece veya silme talebinize kadar saklanır. Erişim ve işlem kayıtları (loglar) en fazla 12 ay saklanır. Hesabınızı sildiğinizde hesap bilgileriniz, kitap kayıtlarınız, okuma listeniz, hedefleriniz, öneri geçmişiniz ve profil fotoğrafınız silinir. Mevzuat gereği saklanması zorunlu olan veya bir uyuşmazlık hâlinde ispat için gerekli olan kayıtlar, ilgili yasal süre boyunca saklanır ve sürenin sonunda silinir, yok edilir veya anonim hâle getirilir.</p>
 <p>Hesabınızı nasıl sileceğiniz <a href="hesap-silme.html">Hesap Silme</a> sayfasında açıklanmıştır.</p>
 
-<h2>6. Yapay zekâ destekli öneriler</h2>
+<h2>6. Veri güvenliği tedbirleri</h2>
+<ul>
+  <li>Verilerin TLS/SSL şifrelemesiyle iletilmesi,</li>
+  <li>Supabase Row Level Security (RLS) ile veri erişim denetimi,</li>
+  <li>Şifrelerin özetlenerek (hash) saklanması,</li>
+  <li>Üçüncü taraf hizmetlere ait anahtarların uygulamada değil sunucuda tutulması,</li>
+  <li>Düzenli güvenlik güncellemeleri.</li>
+</ul>
+
+<h2>7. Yapay zekâ destekli öneriler</h2>
 <p>Kitap ve film önerileri bir yapay zekâ modeli tarafından üretilir ve hata içerebilir. Bu öneriler hakkınızda hukuki sonuç doğuran veya sizi benzer biçimde önemli ölçüde etkileyen bir karar niteliği taşımaz. Önerilere ilişkin itiraz ve geri bildirimlerinizi {{EMAIL}} adresine iletebilirsiniz.</p>
 
-<h2>7. Kanun’un 11. maddesi kapsamındaki haklarınız</h2>
+<h2>8. Kanun’un 11. maddesi kapsamındaki haklarınız</h2>
 <p>Veri sorumlusuna başvurarak:</p>
 """ + RIGHTS_LIST + """
 <p>haklarına sahipsiniz.</p>
 """ + APPLICATION + """
-<h2>8. Değişiklikler</h2>
+<h2>9. Değişiklikler</h2>
 <p>Bu metin, işleme faaliyetlerindeki veya mevzuattaki değişikliklere göre güncellenebilir. Güncel metin bu sayfada yayımlanır; önemli değişiklikler Uygulama üzerinden ayrıca duyurulur.</p>
 """,
 }
@@ -212,7 +222,7 @@ PAGES["kullanici-sozlesmesi"] = {
   <li>Kullanıcı, 13 yaşını doldurmuş olduğunu beyan eder. 18 yaşından küçük Kullanıcılar, Uygulama’yı ancak velilerinin veya yasal temsilcilerinin onayıyla kullanabilir.</li>
   <li>Kullanıcı, kayıt sırasında verdiği bilgilerin doğru ve kendisine ait olduğunu kabul eder.</li>
   <li>Şifrenin belirlenmesi ve gizli tutulması Kullanıcı’nın sorumluluğundadır. Kullanıcı, hesabının izinsiz kullanıldığını fark ettiğinde durumu gecikmeksizin BookAtlas’a bildirir.</li>
-  <li>Her Kullanıcı yalnızca bir hesap için ücretsiz deneme hakkından yararlanabilir.</li>
+  <li>Her Kullanıcı yalnızca bir hesap oluşturabilir ve ücretsiz deneme hakkından bir kez yararlanabilir.</li>
 </ul>
 
 <h2>4. Kullanım kuralları</h2>
@@ -231,7 +241,16 @@ PAGES["kullanici-sozlesmesi"] = {
 <p>Kullanıcı’nın Uygulama’ya girdiği kitap kayıtları, notlar ve diğer içerikler Kullanıcı’ya aittir. Kullanıcı, bu içeriğin yalnızca hizmetin kendisine sunulması amacıyla saklanmasına ve işlenmesine izin verir. Kullanıcı, kayıtlarını Uygulama içinden dışa aktarabilir ve hesabını silerek kaldırabilir.</p>
 <p>Harita kartı gibi paylaşım özellikleriyle oluşturulan görseller, Kullanıcı’nın kendi tercihiyle ve kendi seçtiği mecralarda paylaşılır; bu paylaşımların sorumluluğu Kullanıcı’ya aittir.</p>
 
-<h2>6. Yapay zekâ destekli öneriler</h2>
+<h2>6. Veri güvenliği tedbirleri</h2>
+<ul>
+  <li>Verilerin TLS/SSL şifrelemesiyle iletilmesi,</li>
+  <li>Supabase Row Level Security (RLS) ile veri erişim denetimi,</li>
+  <li>Şifrelerin özetlenerek (hash) saklanması,</li>
+  <li>Üçüncü taraf hizmetlere ait anahtarların uygulamada değil sunucuda tutulması,</li>
+  <li>Düzenli güvenlik güncellemeleri.</li>
+</ul>
+
+<h2>7. Yapay zekâ destekli öneriler</h2>
 <ul>
   <li>Kitap ve film önerileri bir yapay zekâ modeli tarafından üretilir, bilgilendirme amaçlıdır ve hata içerebilir. Önerilen eserin adı, yazarı veya içeriğine ilişkin bilgilerin doğruluğu garanti edilmez.</li>
   <li>Öneri özellikleri günlük kullanım sınırına tabidir. Sınırlar ücretsiz ve premium üyelik için farklıdır ve Uygulama içinde gösterilir.</li>
@@ -277,7 +296,7 @@ PAGES["kullanici-sozlesmesi"] = {
 <p>Bu Sözleşme, Kullanıcı’nın üye olmasıyla yürürlüğe girer ve üyelik devam ettiği sürece yürürlükte kalır. Kullanıcı, Uygulama içindeki “Hesabı Sil” seçeneğini kullanarak veya {{EMAIL}} adresine yazarak üyeliğini dilediği zaman sona erdirebilir. Ayrıntılar <a href="hesap-silme.html">Hesap Silme</a> sayfasındadır.</p>
 
 <h2>16. Uygulanacak hukuk ve uyuşmazlıkların çözümü</h2>
-<p>Bu Sözleşme Türkiye Cumhuriyeti hukukuna tabidir. Sözleşme’den doğan uyuşmazlıklarda, 6502 sayılı Tüketicinin Korunması Hakkında Kanun kapsamındaki parasal sınırlar dâhilinde Kullanıcı’nın yerleşim yerindeki veya işlemin yapıldığı yerdeki Tüketici Hakem Heyetleri ve Tüketici Mahkemeleri yetkilidir. Kullanıcı’nın yerleşik olduğu ülkenin emredici tüketici kurallarından doğan hakları saklıdır.</p>
+<p>Bu Sözleşme Türkiye Cumhuriyeti hukukuna tabidir. Sözleşme’den doğan uyuşmazlıklarda {{COURT}} yetkilidir. Kullanıcı’nın 6502 sayılı Tüketicinin Korunması Hakkında Kanun uyarınca Tüketici Hakem Heyetleri’ne ve Tüketici Mahkemeleri’ne başvurma hakkı ile yerleşik olduğu ülkenin emredici tüketici kurallarından doğan hakları saklıdır.</p>
 
 <h2>17. İletişim</h2>
 """ + CONTACT,
@@ -300,7 +319,7 @@ PAGES["hesap-silme"] = {
 </ol>
 
 <h2>Yöntem 2: E-posta ile</h2>
-<p>{{EMAIL}} adresine, hesabınıza kayıtlı e-posta adresinden “Hesap Silme Talebi” konulu bir e-posta gönderin. Talebiniz en geç 30 gün içinde yerine getirilir.</p>
+<p>Uygulamaya erişemiyorsanız {{EMAIL}} adresine, hesabınıza kayıtlı e-posta adresinden “BookAtlas Hesap Silme Talebi” konulu bir e-posta gönderin; kayıtlı e-posta adresinizi ve adınızı soyadınızı belirtin. Talepler, kimlik doğrulamasının ardından en geç 7 (yedi) iş günü içinde işleme alınır.</p>
 
 <h2>Silinen veriler</h2>
 <p>Hesabınız silindiğinde aşağıdaki veriler kalıcı olarak kaldırılır ve geri getirilemez:</p>
@@ -312,7 +331,7 @@ PAGES["hesap-silme"] = {
   <li>İstatistik ve paylaşım kayıtlarınız,</li>
   <li>Premium üyelik kaydınız.</li>
 </ul>
-<p>Mevzuat gereği saklanması zorunlu olan kayıtlar, ilgili yasal süre boyunca saklanmaya devam edebilir.</p>
+<p>Silme işlemi geri alınamaz. Verilerin yedekleme sistemlerinden tamamen kaldırılması en fazla 30 gün sürebilir. Mevzuat gereği saklanması zorunlu olan kayıtlar, ilgili yasal süre boyunca saklanmaya devam edebilir. Aynı e-posta adresiyle yeniden hesap oluşturabilirsiniz; ancak eski verilerinize erişemezsiniz.</p>
 
 <div class="box">
   <p><strong>Aktif aboneliğiniz varsa:</strong> Hesabınızı silmek mağaza üzerindeki aboneliğinizi iptal etmez. Ücretlendirilmeye devam etmemek için hesabınızı silmeden önce aboneliğinizi App Store veya Google Play hesap ayarlarınızdan iptal edin.</p>

@@ -24,19 +24,24 @@ CONFIG = {
     # sayfaların üstünde "taslak" şeridi gösterir.
     "draft": True,
     # Veri sorumlusu (şirket unvanı ya da şahıs adı) ve tebligat adresi.
-    "controller": None,
-    "address": None,
+    "controller": "Furkan Oruçoğlu",
+    # Tebligat adresi isteğe bağlıdır; boş bırakılırsa metinlerde adres satırı
+    # yer almaz ve başvurular e-posta üzerinden alınır.
+    "address": "",
     # Destek ve KVKK başvuru e-postası.
-    "email": None,
+    "email": "destek@bookatlas.info",
     # Mağaza ve sosyal medya bağlantıları.
     "app_store_url": None,
     "google_play_url": None,
     "instagram_url": None,
     # Supabase projesinin bulunduğu ülke (Supabase paneli > Project Settings).
-    "supabase_region_tr": None,
-    "supabase_region_en": None,
+    "supabase_region_tr": "ABD",
+    "supabase_region_en": "USA",
     # İnternet sitesinin barındırıldığı hizmet.
     "hosting": "GitHub Pages (GitHub, Inc., ABD)",
+    # İstanbul yetkisi mevcut Kullanım Koşulları'ndan alınmıştır.
+    "court_tr": "İstanbul Mahkemeleri ve İcra Daireleri",
+    "court_en": "the courts and enforcement offices of Istanbul",
     "updated_tr": "13.11.2026",
     "updated_en": "13 November 2026",
 }
@@ -59,13 +64,32 @@ def email_link(label: str) -> str:
     return f'<a href="mailto:{safe}">{safe}</a>'
 
 
+def address_line(tr: bool) -> str:
+    address = CONFIG.get("address")
+    if address is None:
+        return f"<strong>{'Adres' if tr else 'Address'}:</strong> {todo('Adres' if tr else 'Address')}<br>"
+    if not address:
+        return ""
+    return f"<strong>{'Adres' if tr else 'Address'}:</strong> {html.escape(address)}<br>"
+
+
+def written_route(tr: bool) -> str:
+    address = CONFIG.get("address")
+    if not address:
+        return ""
+    safe = html.escape(address)
+    return f"{safe} adresine yazılı olarak, " if tr else f"in writing to {safe}, or "
+
+
 def fill(text: str, lang: str) -> str:
     tr = lang == "tr"
     replacements = {
         "{{CONTROLLER}}": value(
             "controller", "Veri sorumlusunun adı / unvanı" if tr else "Name of the data controller"
         ),
-        "{{ADDRESS}}": value("address", "Adres" if tr else "Address"),
+        "{{ADDRESS_LINE}}": address_line(tr),
+        "{{WRITTEN_ROUTE}}": written_route(tr),
+        "{{COURT}}": html.escape(CONFIG["court_tr" if tr else "court_en"]),
         "{{EMAIL}}": email_link("e-posta adresi" if tr else "email address"),
         "{{SUPABASE_REGION}}": value("supabase_region_tr", "Supabase sunucu ülkesi"),
         "{{SUPABASE_REGION_EN}}": value("supabase_region_en", "Supabase server country"),
@@ -216,7 +240,7 @@ def layout(*, lang, path, title, description, main, other_lang_href, home_sectio
     instagram = CONFIG.get("instagram_url")
     instagram_item = (
         f'<li><a href="{html.escape(instagram)}" rel="noopener">{s["instagram"]}</a></li>'
-        if instagram else f'<li>{todo("Instagram bağlantısı")}</li>'
+        if instagram else ""
     )
     draft = f'<div class="draft"><div class="wrap">{s["draft"]}</div></div>' if show_draft else ""
 
@@ -267,7 +291,7 @@ def layout(*, lang, path, title, description, main, other_lang_href, home_sectio
         {instagram_item}
       </ul>
     </div>
-    <p class="fine">© 2026 BookAtlas. {s["rights"]}</p>
+    <p class="fine">© 2026 BookAtlas — {html.escape(CONFIG["controller"] or "")}. {s["rights"]}</p>
   </div>
 </footer>
 </body>
