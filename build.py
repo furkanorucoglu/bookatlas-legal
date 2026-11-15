@@ -40,9 +40,9 @@ CONFIG = {
     "instagram_url": "https://www.instagram.com/bookatlasapp/",
     "tiktok_url": "https://www.tiktok.com/@bookatlasapp",
     # Supabase projesinin bulunduğu ülke (Supabase paneli > Project Settings).
-    # Sunucular AWS ap-southeast-2 (Sidney) bölgesinde; şirket ABD merkezli.
-    "supabase_region_tr": "Avustralya (sunucu konumu; şirket ABD merkezli)",
-    "supabase_region_en": "Australia (server location; company based in the USA)",
+    # Sunucular AWS eu-central-1 (Frankfurt) bölgesinde; şirket ABD merkezli.
+    "supabase_region_tr": "Almanya (Frankfurt; şirket ABD merkezli)",
+    "supabase_region_en": "Germany (Frankfurt; company based in the USA)",
     # İnternet sitesinin barındırıldığı hizmet.
     "hosting": "GitHub Pages (GitHub, Inc., ABD)",
     # İstanbul yetkisi mevcut Kullanım Koşulları'ndan alınmıştır.

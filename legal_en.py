@@ -15,9 +15,8 @@ RECIPIENTS_TABLE = """
     <tr><td>Google LLC (Google Books)</td><td>USA</td><td>Your book search query or ISBN (relayed through our server); your IP address when a cover image loads</td><td>Book details and cover images</td></tr>
     <tr><td>Internet Archive (Open Library)</td><td>USA</td><td>Your book search query or ISBN (relayed through our server); your IP address when a cover image loads</td><td>Book details and cover images</td></tr>
     <tr><td>OpenStreetMap Foundation (Nominatim)</td><td>United Kingdom</td><td>The city and country name you enter on a book entry (relayed through our server)</td><td>Placing the city on the map</td></tr>
-    <tr><td>OMDb API</td><td>USA</td><td>Title and year of a recommended movie (relayed through our server)</td><td>Movie poster image</td></tr>
-    <tr><td>RevenueCat, Inc.</td><td>USA</td><td>Your user ID, purchased product, subscription status and period</td><td>Managing Premium subscriptions</td></tr>
-    <tr><td>Apple Inc. / Google LLC (app stores)</td><td>USA</td><td>Purchase and subscription transactions. Your payment card details are handled only by the store and are never shared with us.</td><td>Taking payment</td></tr>
+    <tr><td>OMDb API and the servers hosting poster images</td><td>USA</td><td>Title and year of a recommended movie (relayed through our server); your IP address when a poster image loads</td><td>Movie poster image</td></tr>
+    <tr><td>GitHub, Inc. (GitHub Pages)</td><td>USA</td><td>Your IP address when you open the legal pages from within the App</td><td>Publishing the legal documents and this website</td></tr>
   </tbody>
 </table>
 </div>
@@ -52,6 +51,7 @@ PAGES["privacy_policy"] = {
   <li><strong>Image:</strong> your profile photo, if you upload one.</li>
   <li><strong>Your content and activity:</strong> the books you log (title, author, ISBN, country, city, reader name, finish date and your notes), your reading list, reading goals, reading statistics, the short bio on your profile, a record of map cards you share, the requests you type to the AI assistant, and the history of book and movie recommendations you receive.</li>
   <li><strong>Subscription:</strong> Premium status, plan, purchased product, store, start and end dates. We never receive your payment card details; payments are taken by the App Store or Google Play.</li>
+  <li><strong>Legal records:</strong> when you accepted the Terms of Use, this Privacy Policy and the Explicit Consent Statement, which version you accepted, and your confirmation that you are at least 13.</li>
   <li><strong>Security:</strong> IP address, session and access logs, and daily usage counts for the AI and search features.</li>
   <li><strong>Preferences:</strong> your language preference and app settings, which are stored locally on your device together with your session.</li>
 </ul>
