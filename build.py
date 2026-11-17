@@ -48,8 +48,8 @@ CONFIG = {
     # İstanbul yetkisi mevcut Kullanım Koşulları'ndan alınmıştır.
     "court_tr": "İstanbul Mahkemeleri ve İcra Daireleri",
     "court_en": "the courts and enforcement offices of Istanbul",
-    "updated_tr": "15.11.2026",
-    "updated_en": "15 November 2026",
+    "updated_tr": "17.11.2026",
+    "updated_en": "17 November 2026",
 }
 
 
