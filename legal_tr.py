@@ -16,9 +16,10 @@ RECIPIENTS_TABLE = """
     <tr><td>Google LLC (Google Books)</td><td>ABD</td><td>Kitap arama sorgunuz veya ISBN numarası (sunucumuz üzerinden iletilir); kapak görseli yüklenirken IP adresiniz</td><td>Kitap bilgisi ve kapak görseli</td></tr>
     <tr><td>Internet Archive (Open Library)</td><td>ABD</td><td>Kitap arama sorgunuz veya ISBN numarası (sunucumuz üzerinden iletilir); kapak görseli yüklenirken IP adresiniz</td><td>Kitap bilgisi ve kapak görseli</td></tr>
     <tr><td>OpenStreetMap Foundation (Nominatim)</td><td>Birleşik Krallık</td><td>Kitap kaydına girdiğiniz şehir ve ülke adı (sunucumuz üzerinden iletilir)</td><td>Şehrin haritada konumlandırılması</td></tr>
-    <tr><td>OMDb API</td><td>ABD</td><td>Önerilen filmin adı ve yılı (sunucumuz üzerinden iletilir)</td><td>Film afişi görseli</td></tr>
-    <tr><td>RevenueCat, Inc.</td><td>ABD</td><td>Kullanıcı kimlik numaranız, satın aldığınız ürün, abonelik durumu ve süresi</td><td>Premium aboneliğin yönetilmesi</td></tr>
-    <tr><td>Apple Inc. / Google LLC (uygulama mağazaları)</td><td>ABD</td><td>Satın alma ve abonelik işlemleri. Ödeme kartı bilgileriniz yalnızca mağaza tarafından işlenir, bize iletilmez.</td><td>Ödemenin alınması</td></tr>
+    <tr><td>OMDb API ve afiş görsellerini barındıran sunucular</td><td>ABD</td><td>Önerilen filmin adı ve yılı (sunucumuz üzerinden iletilir); afiş görseli yüklenirken IP adresiniz</td><td>Film afişi görseli</td></tr>
+    <tr><td>GitHub, Inc. (GitHub Pages)</td><td>ABD</td><td>Uygulama içinden hukuki metin sayfalarını açtığınızda IP adresiniz</td><td>Hukuki metinlerin ve internet sitesinin yayımlanması</td></tr>
+    <tr><td>RevenueCat, Inc.</td><td>ABD</td><td>Kullanıcı kimlik numaranız, satın aldığınız ürün, abonelik durumu ve süresi</td><td>Premium aboneliğin yönetilmesi (uygulama içi satın alma kullanıma açıldığında)</td></tr>
+    <tr><td>Apple Inc. / Google LLC (uygulama mağazaları)</td><td>ABD</td><td>Satın alma ve abonelik işlemleri. Ödeme kartı bilgileriniz yalnızca mağaza tarafından işlenir, bize iletilmez.</td><td>Ödemenin alınması (uygulama içi satın alma kullanıma açıldığında)</td></tr>
   </tbody>
 </table>
 </div>
@@ -67,6 +68,7 @@ PAGES["aydinlatma-metni-uyeler"] = {
   <li><strong>Görsel kayıtlar:</strong> yüklemeniz hâlinde profil fotoğrafı.</li>
   <li><strong>Kullanıcı içeriği ve işlem bilgileri:</strong> okuduğunuz kitaplara ilişkin kayıtlar (kitap adı, yazar, ISBN, ülke, şehir, okuyan kişinin adı, bitirme tarihi ve notlarınız), okuma listeniz, okuma hedefleriniz, okuma istatistikleriniz, profilinize yazdığınız kısa tanıtım, harita kartı paylaşım kayıtlarınız, yapay zekâ asistanına yazdığınız istekler ile size sunulan kitap ve film önerilerinin geçmişi.</li>
   <li><strong>Abonelik bilgileri:</strong> premium üyelik durumu, plan türü, satın alınan ürün, satın almanın yapıldığı mağaza, başlangıç ve bitiş tarihleri. Ödeme kartı bilgileriniz tarafımızca işlenmez; ödemeler App Store veya Google Play üzerinden alınır.</li>
+  <li><strong>Hukuki işlem bilgileri:</strong> kullanıcı sözleşmesini, bu aydınlatma metnini ve açık rıza beyanını onayladığınız zaman ve metin sürümü ile 13 yaşını doldurduğunuza ilişkin beyanınız.</li>
   <li><strong>İşlem güvenliği bilgileri:</strong> IP adresi, oturum ve erişim kayıtları, yapay zekâ ve arama özelliklerinin günlük kullanım sayıları.</li>
   <li><strong>Tercih bilgileri:</strong> dil tercihiniz ve uygulama ayarlarınız. Bu bilgiler oturum bilginizle birlikte cihazınızda yerel olarak saklanır.</li>
 </ul>
@@ -113,7 +115,10 @@ PAGES["aydinlatma-metni-uyeler"] = {
 <p>Kişisel verileriniz üyeliğiniz devam ettiği sürece veya silme talebinize kadar saklanır. Erişim ve işlem kayıtları (loglar) en fazla 12 ay saklanır. Hesabınızı sildiğinizde hesap bilgileriniz, kitap kayıtlarınız, okuma listeniz, hedefleriniz, öneri geçmişiniz ve profil fotoğrafınız silinir. Mevzuat gereği saklanması zorunlu olan veya bir uyuşmazlık hâlinde ispat için gerekli olan kayıtlar, ilgili yasal süre boyunca saklanır ve sürenin sonunda silinir, yok edilir veya anonim hâle getirilir.</p>
 <p>Hesabınızı nasıl sileceğiniz <a href="hesap-silme.html">Hesap Silme</a> sayfasında açıklanmıştır.</p>
 
-<h2>6. Veri güvenliği tedbirleri</h2>
+<h2>6. Çocuklar</h2>
+<p>BookAtlas 13 yaşından küçüklere yönelik değildir; hesap oluşturmak için 13 yaşını doldurmuş olmak gerekir ve bu beyan kayıt sırasında alınıp saklanır. 18 yaşından küçükseniz uygulamayı veli veya vasinizin onayıyla kullanabilirsiniz. 13 yaşından küçük bir çocuğun hesap oluşturduğunu düşünüyorsanız {{EMAIL}} adresine yazın; hesabı sileriz.</p>
+
+<h2>7. Veri güvenliği tedbirleri</h2>
 <ul>
   <li>Verilerin TLS/SSL şifrelemesiyle iletilmesi,</li>
   <li>Supabase Row Level Security (RLS) ile veri erişim denetimi,</li>
@@ -122,15 +127,15 @@ PAGES["aydinlatma-metni-uyeler"] = {
   <li>Düzenli güvenlik güncellemeleri.</li>
 </ul>
 
-<h2>7. Yapay zekâ destekli öneriler</h2>
+<h2>8. Yapay zekâ destekli öneriler</h2>
 <p>Kitap ve film önerileri bir yapay zekâ modeli tarafından üretilir ve hata içerebilir. Bu öneriler hakkınızda hukuki sonuç doğuran veya sizi benzer biçimde önemli ölçüde etkileyen bir karar niteliği taşımaz. Önerilere ilişkin itiraz ve geri bildirimlerinizi {{EMAIL}} adresine iletebilirsiniz.</p>
 
-<h2>8. Kanun’un 11. maddesi kapsamındaki haklarınız</h2>
+<h2>9. Kanun’un 11. maddesi kapsamındaki haklarınız</h2>
 <p>Veri sorumlusuna başvurarak:</p>
 """ + RIGHTS_LIST + """
 <p>haklarına sahipsiniz.</p>
 """ + APPLICATION + """
-<h2>9. Değişiklikler</h2>
+<h2>10. Değişiklikler</h2>
 <p>Bu metin, işleme faaliyetlerindeki veya mevzuattaki değişikliklere göre güncellenebilir. Güncel metin bu sayfada yayımlanır; önemli değişiklikler Uygulama üzerinden ayrıca duyurulur.</p>
 """,
 }
